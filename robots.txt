@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devr77.github.io/chromecast-online/sitemap.xml

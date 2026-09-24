@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d12"/>
+      <stop offset="1" stop-color="#18213d"/>
+    </linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b86ff"/>
+      <stop offset="1" stop-color="#2f4fd8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.15" r="0.6">
+      <stop offset="0" stop-color="#3563f0" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#3563f0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="80" y="84" width="96" height="96" rx="22" fill="url(#g)"/>
+  <g transform="translate(95 99) scale(2.75)" fill="#fff">
+    <path d="M21 3H3a2 2 0 0 0-2 2v3h2V5h18v14h-7v2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM1 18v3h3a3 3 0 0 0-3-3Zm0-4v2a5 5 0 0 1 5 5h2a7 7 0 0 0-7-7Zm0-4v2a9 9 0 0 1 9 9h2A11 11 0 0 0 1 10Z"/>
+  </g>
+  <text x="200" y="146" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#e8ebf2">Cast Test Sender</text>
+  <text x="80" y="300" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#ffffff" letter-spacing="-1.5">Test Chromecast &amp; Google Cast</text>
+  <text x="80" y="382" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#7096ff" letter-spacing="-1.5">streams online</text>
+  <text x="80" y="460" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" fill="#97a0b5">Cast any stream URL · custom receivers · subtitles · queues</text>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" font-weight="700">
+    <rect x="80" y="514" width="104" height="48" rx="24" fill="#1f2a4a"/><text x="132" y="546" text-anchor="middle" fill="#a9bfff">MP4</text>
+    <rect x="198" y="514" width="104" height="48" rx="24" fill="#1f2a4a"/><text x="250" y="546" text-anchor="middle" fill="#a9bfff">HLS</text>
+    <rect x="316" y="514" width="120" height="48" rx="24" fill="#1f2a4a"/><text x="376" y="546" text-anchor="middle" fill="#a9bfff">DASH</text>
+    <rect x="450" y="514" width="112" height="48" rx="24" fill="#3a1a1d"/><text x="506" y="546" text-anchor="middle" fill="#ff8a84">LIVE</text>
+    <rect x="576" y="514" width="104" height="48" rx="24" fill="#16342a"/><text x="628" y="546" text-anchor="middle" fill="#3ecf8e">Free</text>
+  </g>
+</svg>

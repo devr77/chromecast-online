@@ -6,10 +6,10 @@
 
   <!-- Primary SEO -->
   <title>Cast Test Sender — Test Chromecast &amp; Google Cast Streams Online</title>
-  <meta name="description" content="Free online Chromecast test tool. Cast any MP4, HLS, DASH, audio or image URL to a Google Cast device, test custom receiver app IDs, subtitles, queues and live streams — right from Chrome." />
+  <meta name="description" content="Free Chromecast test tool. Cast any MP4, HLS, DASH, audio or image URL to a Google Cast device and test custom receivers, subtitles and live streams in Chrome." />
   <meta name="keywords" content="chromecast test, google cast test sender, cast video url to chromecast, test cast receiver, chromecast hls test, chromecast dash test, default media receiver, cast sdk tester" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <link rel="canonical" href="https://your-domain.com/" />
+  <link rel="canonical" href="https://devr77.github.io/chromecast-online/" />
   <meta name="author" content="Cast Test Sender" />
   <meta name="application-name" content="Cast Test Sender" />
   <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
@@ -22,8 +22,8 @@
   <meta property="og:site_name" content="Cast Test Sender" />
   <meta property="og:title" content="Cast Test Sender — Test Chromecast &amp; Google Cast Streams Online" />
   <meta property="og:description" content="Cast any MP4, HLS, DASH, audio or image URL to Chromecast and Google TV. Test custom receivers, subtitles, queues and live streams in your browser." />
-  <meta property="og:url" content="https://your-domain.com/" />
-  <meta property="og:image" content="https://your-domain.com/og-image.png" />
+  <meta property="og:url" content="https://devr77.github.io/chromecast-online/" />
+  <meta property="og:image" content="https://devr77.github.io/chromecast-online/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Cast Test Sender — cast any stream URL to a Google Cast device" />
@@ -33,7 +33,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cast Test Sender — Test Chromecast &amp; Google Cast Streams Online" />
   <meta name="twitter:description" content="Cast any MP4, HLS, DASH, audio or image URL to Chromecast. Test custom receivers, subtitles, queues and live streams." />
-  <meta name="twitter:image" content="https://your-domain.com/og-image.png" />
+  <meta name="twitter:image" content="https://devr77.github.io/chromecast-online/og-image.png" />
 
   <!-- Icons & PWA -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -47,7 +47,7 @@
 
   <!-- Apply saved theme before first paint (avoids a flash) -->
   <script>
-    try { var t = localStorage.getItem('cts-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try { var t = localStorage.getItem('cts-theme'); if (t) document.documentElement.dataset.theme = JSON.parse(t); } catch (e) {}
   </script>
 
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -64,18 +64,18 @@
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": "https://your-domain.com/#website",
-        "url": "https://your-domain.com/",
+        "@id": "https://devr77.github.io/chromecast-online/#website",
+        "url": "https://devr77.github.io/chromecast-online/",
         "name": "Cast Test Sender",
         "description": "Free online tool to test Chromecast and Google Cast playback.",
         "inLanguage": "en"
       },
       {
         "@type": "WebApplication",
-        "@id": "https://your-domain.com/#app",
+        "@id": "https://devr77.github.io/chromecast-online/#app",
         "name": "Cast Test Sender",
-        "url": "https://your-domain.com/",
-        "image": "https://your-domain.com/og-image.png",
+        "url": "https://devr77.github.io/chromecast-online/",
+        "image": "https://devr77.github.io/chromecast-online/og-image.png",
         "applicationCategory": "DeveloperApplication",
         "applicationSubCategory": "Media streaming test tool",
         "operatingSystem": "Windows, macOS, Linux, ChromeOS, Android",
@@ -94,11 +94,11 @@
           "Shareable deep links and local preview",
           "Live event log with export"
         ],
-        "isPartOf": { "@id": "https://your-domain.com/#website" }
+        "isPartOf": { "@id": "https://devr77.github.io/chromecast-online/#website" }
       },
       {
         "@type": "FAQPage",
-        "@id": "https://your-domain.com/#faq",
+        "@id": "https://devr77.github.io/chromecast-online/#faq",
         "mainEntity": [
           {
             "@type": "Question",
