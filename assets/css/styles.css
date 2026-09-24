@@ -426,3 +426,4 @@ td { color: var(--muted); }
 .selected-text { flex: 1; min-width: 0; display: grid; }
 .selected-text strong { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .selected-text span { font: 12px var(--mono); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.field .hint { margin-top: 0; }

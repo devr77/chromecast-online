@@ -128,7 +128,7 @@
           {
             "@type": "Question",
             "name": "Can I cast a local file from my computer?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The Cast device downloads media itself, so the file must be reachable at a URL on your network or the internet. Serve the folder with a local web server and use your computer's LAN IP address rather than localhost. Adaptive streams also need HTTPS and CORS headers." }
+            "acceptedAnswer": { "@type": "Answer", "text": "The Cast device downloads media itself, so the file must be reachable at a URL on your network or the internet. The easiest way is to upload it with a free tool such as Video to URL (toolsbase.org/share/video-to-url) and paste the link you get. You can also serve the folder with a local web server and use your computer's LAN IP address rather than localhost. Adaptive streams also need HTTPS and CORS headers." }
           },
           {
             "@type": "Question",
@@ -263,7 +263,8 @@
         <form id="mediaForm" novalidate>
           <div class="field">
             <label for="mediaUrl">Media URL <span class="req" aria-hidden="true">*</span></label>
-            <input id="mediaUrl" type="url" required value="https://d2jjpiwbo3e767.cloudfront.net/thumbnails/1790237055659-1790237056237.mp4" placeholder="https://example.com/stream.m3u8" autocomplete="url" spellcheck="false" />
+            <input id="mediaUrl" type="url" required value="https://d2jjpiwbo3e767.cloudfront.net/thumbnails/1790237055659-1790237056237.mp4" placeholder="https://example.com/stream.m3u8" autocomplete="url" spellcheck="false" aria-describedby="mediaUrlHint" />
+            <p class="hint" id="mediaUrlHint">Have a video file but no link? <a href="https://toolsbase.org/share/video-to-url" target="_blank" rel="noopener">Upload it with Video to URL</a> to get a shareable URL, then paste it here.</p>
           </div>
           <div class="grid2">
             <div class="field">
@@ -570,7 +571,7 @@
       </details>
       <details>
         <summary><h3>Can I cast a local file from my computer?</h3></summary>
-        <p>The Cast device downloads media itself, so the file must be reachable at a URL on your network or the internet. Serve the folder with a local web server and use your computer's LAN IP address rather than localhost. Adaptive streams also need HTTPS and CORS headers.</p>
+        <p>The Cast device downloads media itself, so the file must be reachable at a URL on your network or the internet. The easiest way is to upload it with a free tool such as <a href="https://toolsbase.org/share/video-to-url" target="_blank" rel="noopener">Video to URL</a> and paste the link you get. You can also serve the folder with a local web server and use your computer's LAN IP address rather than localhost. Adaptive streams also need HTTPS and CORS headers.</p>
       </details>
       <details>
         <summary><h3>Is my data sent to a server?</h3></summary>
