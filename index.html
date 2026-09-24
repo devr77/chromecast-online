@@ -245,7 +245,12 @@
         </div>
 
         <div role="tabpanel" id="panel-samples" aria-labelledby="tab-samples">
-          <ul class="samples" id="samples"></ul>
+          <ul class="samples" id="samples">
+            <li><button class="sample" type="button" aria-pressed="true" data-url="https://d2jjpiwbo3e767.cloudfront.net/thumbnails/1790237055659-1790237056237.mp4" data-type="video/mp4" data-title="Sample video">
+              <span class="thumb"><span class="tag">MP4</span><video src="https://d2jjpiwbo3e767.cloudfront.net/thumbnails/1790237055659-1790237056237.mp4#t=1" preload="metadata" muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video></span>
+              <span class="meta"><span class="name">Sample video</span><span class="desc">MP4 · CloudFront</span></span>
+            </button></li>
+          </ul>
         </div>
 
         <div role="tabpanel" id="panel-recent" aria-labelledby="tab-recent" hidden>
@@ -258,12 +263,12 @@
         <form id="mediaForm" novalidate>
           <div class="field">
             <label for="mediaUrl">Media URL <span class="req" aria-hidden="true">*</span></label>
-            <input id="mediaUrl" type="url" required placeholder="https://example.com/stream.m3u8" autocomplete="url" spellcheck="false" />
+            <input id="mediaUrl" type="url" required value="https://d2jjpiwbo3e767.cloudfront.net/thumbnails/1790237055659-1790237056237.mp4" placeholder="https://example.com/stream.m3u8" autocomplete="url" spellcheck="false" />
           </div>
           <div class="grid2">
             <div class="field">
               <label for="contentType">Content type</label>
-              <input id="contentType" list="contentTypes" placeholder="Detected from URL" spellcheck="false" />
+              <input id="contentType" list="contentTypes" value="video/mp4" placeholder="Detected from URL" spellcheck="false" />
               <datalist id="contentTypes">
                 <option value="video/mp4">MP4</option>
                 <option value="video/webm">WebM</option>
@@ -351,27 +356,33 @@
             </div>
           </details>
 
-          <p class="form-error" id="formError" role="alert" hidden></p>
-
-          <div class="actions">
-            <button id="castBtn" class="btn primary" type="submit" disabled>
-              <svg class="ico"><use href="#i-cast"/></svg>Cast now
-            </button>
-            <button id="queueBtn" class="btn" type="button" disabled>Add to queue</button>
-            <button id="previewBtn" class="btn ghost" type="button">Preview here</button>
-            <button id="shareBtn" class="btn ghost" type="button" title="Copy a link that pre-fills this form">
-              <svg class="ico"><use href="#i-link"/></svg>Copy link
-            </button>
-          </div>
-
-          <div class="preview" id="previewWrap" hidden>
-            <video id="preview" controls playsinline preload="metadata"></video>
-            <img id="previewImg" alt="Image preview" hidden />
-            <button id="closePreview" class="icon-btn preview-close" type="button" aria-label="Close preview">
-              <svg class="ico"><use href="#i-x"/></svg>
-            </button>
-          </div>
         </form>
+        </div>
+
+        <div class="selected" id="selected" hidden>
+          <span class="pill accent" id="selectedTag">MP4</span>
+          <span class="selected-text"><strong id="selectedTitle"></strong><span id="selectedUrl"></span></span>
+          <button id="editSelected" class="btn ghost small" type="button">Edit</button>
+        </div>
+        <p class="form-error" id="formError" role="alert" hidden></p>
+
+        <div class="actions">
+          <button id="castBtn" class="btn primary" type="submit" form="mediaForm" disabled>
+            <svg class="ico"><use href="#i-cast"/></svg>Cast now
+          </button>
+          <button id="queueBtn" class="btn" type="button" disabled>Add to queue</button>
+          <button id="previewBtn" class="btn ghost" type="button">Preview here</button>
+          <button id="shareBtn" class="btn ghost" type="button" title="Copy a link that pre-fills this form">
+            <svg class="ico"><use href="#i-link"/></svg>Copy link
+          </button>
+        </div>
+
+        <div class="preview" id="previewWrap" hidden>
+          <video id="preview" controls playsinline preload="metadata"></video>
+          <img id="previewImg" alt="Image preview" hidden />
+          <button id="closePreview" class="icon-btn preview-close" type="button" aria-label="Close preview">
+            <svg class="ico"><use href="#i-x"/></svg>
+          </button>
         </div>
       </article>
     </div>
