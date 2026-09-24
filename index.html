@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- Primary SEO -->
+  <title>Cast Test Sender — Test Chromecast &amp; Google Cast Streams Online</title>
+  <meta name="description" content="Free online Chromecast test tool. Cast any MP4, HLS, DASH, audio or image URL to a Google Cast device, test custom receiver app IDs, subtitles, queues and live streams — right from Chrome." />
+  <meta name="keywords" content="chromecast test, google cast test sender, cast video url to chromecast, test cast receiver, chromecast hls test, chromecast dash test, default media receiver, cast sdk tester" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://your-domain.com/" />
+  <meta name="author" content="Cast Test Sender" />
+  <meta name="application-name" content="Cast Test Sender" />
+  <meta name="theme-color" content="#f6f7fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b0d12" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cast Test Sender" />
+  <meta property="og:title" content="Cast Test Sender — Test Chromecast &amp; Google Cast Streams Online" />
+  <meta property="og:description" content="Cast any MP4, HLS, DASH, audio or image URL to Chromecast and Google TV. Test custom receivers, subtitles, queues and live streams in your browser." />
+  <meta property="og:url" content="https://your-domain.com/" />
+  <meta property="og:image" content="https://your-domain.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cast Test Sender — cast any stream URL to a Google Cast device" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cast Test Sender — Test Chromecast &amp; Google Cast Streams Online" />
+  <meta name="twitter:description" content="Cast any MP4, HLS, DASH, audio or image URL to Chromecast. Test custom receivers, subtitles, queues and live streams." />
+  <meta name="twitter:image" content="https://your-domain.com/og-image.png" />
+
+  <!-- Icons & PWA -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.gstatic.com" />
+
+  <!-- Apply saved theme before first paint (avoids a flash) -->
+  <script>
+    try { var t = localStorage.getItem('cts-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- The Cast SDK calls __onGCastApiAvailable once loaded; expose it as a promise for the app module -->
+  <script>
+    window.__castApiReady = new Promise(function (resolve) { window.__onGCastApiAvailable = resolve; });
+  </script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://your-domain.com/#website",
+        "url": "https://your-domain.com/",
+        "name": "Cast Test Sender",
+        "description": "Free online tool to test Chromecast and Google Cast playback.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://your-domain.com/#app",
+        "name": "Cast Test Sender",
+        "url": "https://your-domain.com/",
+        "image": "https://your-domain.com/og-image.png",
+        "applicationCategory": "DeveloperApplication",
+        "applicationSubCategory": "Media streaming test tool",
+        "operatingSystem": "Windows, macOS, Linux, ChromeOS, Android",
+        "browserRequirements": "Requires Google Chrome or Microsoft Edge (Chromium) with JavaScript enabled.",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "featureList": [
+          "Cast MP4, WebM, HLS, DASH and Smooth Streaming URLs",
+          "Cast audio (MP3, AAC, FLAC) and images",
+          "Test custom Cast receiver application IDs",
+          "WebVTT subtitles and caption toggling",
+          "Live stream support",
+          "Playback queue with next / previous",
+          "Remote play, pause, seek, volume and speed",
+          "Send custom namespace messages to receivers",
+          "Shareable deep links and local preview",
+          "Live event log with export"
+        ],
+        "isPartOf": { "@id": "https://your-domain.com/#website" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://your-domain.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a Cast test sender?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A Cast test sender is a web page that uses the Google Cast Web Sender SDK to connect to a Chromecast, Google TV or Cast-enabled speaker and load a media URL on it. Developers use it to check that streams, subtitles and custom receiver apps play correctly on real Cast hardware." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why doesn't the Cast button appear or find my Chromecast?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Use Google Chrome or Microsoft Edge on desktop or Android, open the page over HTTPS, and make sure your computer and Cast device are on the same Wi-Fi network. Guest networks, VPNs and routers with client or AP isolation often block Cast discovery." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which formats does the Default Media Receiver support?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The Default Media Receiver plays MP4 (H.264/AAC), WebM (VP8/VP9), HLS, MPEG-DASH and Smooth Streaming video, MP3, AAC, FLAC, Opus and WAV audio, and JPEG, PNG, GIF, BMP and WebP images. HEVC, 4K and HDR support depends on the specific Cast device." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does my HLS or DASH stream fail with LOAD_FAILED?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Adaptive streams are fetched by the receiver with JavaScript, so the manifest and every segment must be served over HTTPS with an Access-Control-Allow-Origin header. For HLS streams that use fragmented MP4 segments, set the HLS segment format options to FMP4." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I test my own custom Cast receiver?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Enter your receiver application ID from the Google Cast SDK Developer Console in the Receiver app ID field and apply it. Unpublished receivers only run on devices whose serial number is registered in the console; after registering, restart the device and wait about 15 minutes." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I cast a local file from my computer?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The Cast device downloads media itself, so the file must be reachable at a URL on your network or the internet. Serve the folder with a local web server and use your computer's LAN IP address rather than localhost. Adaptive streams also need HTTPS and CORS headers." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data sent to a server?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. The tool runs entirely in your browser. Media URLs are sent directly to your Cast device, and your recent casts are saved only in your browser's local storage." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work on iPhone, Safari or Firefox?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. The Google Cast Web Sender SDK is only supported in Chrome and Chromium-based Edge on Windows, macOS, Linux, ChromeOS and Android. On iOS you need a native app that uses the Cast iOS SDK." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#tool">Skip to the tool</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-cast" viewBox="0 0 24 24"><path fill="currentColor" d="M21 3H3a2 2 0 0 0-2 2v3h2V5h18v14h-7v2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM1 18v3h3a3 3 0 0 0-3-3Zm0-4v2a5 5 0 0 1 5 5h2a7 7 0 0 0-7-7Zm0-4v2a9 9 0 0 1 9 9h2A11 11 0 0 0 1 10Z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.9-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4h3.5v16H7zM13.5 4H17v16h-3.5z"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect fill="currentColor" x="6" y="6" width="12" height="12" rx="1.5"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5V1L7 6l5 5V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8Z"/><text x="12" y="16.2" font-size="6.5" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-weight="700">10</text></symbol>
+    <symbol id="i-fwd" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5V1l5 5-5 5V7a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8Z"/><text x="12" y="16.2" font-size="6.5" text-anchor="middle" fill="currentColor" font-family="system-ui,sans-serif" font-weight="700">10</text></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path fill="currentColor" d="M6 5h2v14H6zM20 5.5v13a1 1 0 0 1-1.54.84L9.5 13.1a1.3 1.3 0 0 1 0-2.2l8.96-6.24A1 1 0 0 1 20 5.5Z"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path fill="currentColor" d="M16 5h2v14h-2zM4 5.5v13a1 1 0 0 0 1.54.84l8.96-6.24a1.3 1.3 0 0 0 0-2.2L5.54 4.66A1 1 0 0 0 4 5.5Z"/></symbol>
+    <symbol id="i-vol" viewBox="0 0 24 24"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3Zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.47 4.47 0 0 0 2.5-4ZM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23Z"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3Zm18.7 1.7-1.4-1.4L18 11.6l-2.3-2.3-1.4 1.4 2.3 2.3-2.3 2.3 1.4 1.4 2.3-2.3 2.3 2.3 1.4-1.4-2.3-2.3 2.3-2.3Z"/></symbol>
+    <symbol id="i-cc" viewBox="0 0 24 24"><path fill="currentColor" d="M19 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm-8 7H9.5v-.5h-2v3h2V13H11v1a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1Zm7 0h-1.5v-.5h-2v3h2V13H18v1a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10ZM11 1h2v3h-2zM11 20h2v3h-2zM1 11h3v2H1zM20 11h3v2h-3zM4.22 5.64l1.42-1.42 2.12 2.12-1.42 1.42zM16.24 17.66l1.42-1.42 2.12 2.12-1.42 1.42zM4.22 18.36l2.12-2.12 1.42 1.42-2.12 2.12zM16.24 6.34l2.12-2.12 1.42 1.42-2.12 2.12z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.74 14.2A8.5 8.5 0 0 1 9.8 3.26a.75.75 0 0 0-.98-.9A10 10 0 1 0 21.64 15.18a.75.75 0 0 0-.9-.98Z"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path fill="currentColor" d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0Zm-2.1 5.3-.7.7a3 3 0 0 1-4.2-4.2l3.5-3.5a3 3 0 0 1 4.2 0 1 1 0 0 0 1.4-1.4 5 5 0 0 0-7 0L2.2 13.8a5 5 0 0 0 7 7l.7-.7a1 1 0 0 0-1.4-1.4Zm13.3-15.5a5 5 0 0 0-7 0l-.7.7a1 1 0 1 0 1.4 1.4l.7-.7a3 3 0 0 1 4.2 4.2l-3.5 3.5a3 3 0 0 1-4.2 0 1 1 0 0 0-1.4 1.4 5 5 0 0 0 7 0l3.5-3.5a5 5 0 0 0 0-7Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.3 5.7a1 1 0 0 0-1.4 0L12 10.6 7.1 5.7a1 1 0 0 0-1.4 1.4l4.9 4.9-4.9 4.9a1 1 0 1 0 1.4 1.4l4.9-4.9 4.9 4.9a1 1 0 0 0 1.4-1.4L13.4 12l4.9-4.9a1 1 0 0 0 0-1.4Z"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./" aria-label="Cast Test Sender home">
+      <img src="favicon.svg" width="30" height="30" alt="" />
+      <span>Cast Test Sender</span>
+    </a>
+    <nav class="header-nav" aria-label="Page sections">
+      <a href="#how-it-works">How it works</a>
+      <a href="#formats">Formats</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <button id="themeBtn" class="icon-btn" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+        <svg class="ico show-light"><use href="#i-moon"/></svg>
+        <svg class="ico show-dark"><use href="#i-sun"/></svg>
+      </button>
+      <google-cast-launcher class="launcher" title="Cast to a device"></google-cast-launcher>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap" aria-labelledby="page-title">
+    <p class="eyebrow">Free · No install · Runs in your browser</p>
+    <h1 id="page-title">Test Chromecast &amp; Google Cast streams online</h1>
+    <p class="lede">Cast any MP4, HLS, DASH, audio or image URL to a Chromecast, Google TV or Nest device. Check custom receiver apps, subtitles, queues and live streams without writing a line of code.</p>
+    <ul class="env" id="envList" aria-label="Environment checks">
+      <li id="envSecure" data-state="pending"><span class="dot"></span>Secure context</li>
+      <li id="envBrowser" data-state="pending"><span class="dot"></span>Supported browser</li>
+      <li id="envSdk" data-state="pending"><span class="dot"></span>Cast SDK</li>
+      <li id="envDevices" data-state="pending"><span class="dot"></span>Cast devices</li>
+    </ul>
+    <div id="warn" class="banner" role="alert" hidden></div>
+    <noscript><div class="banner">This tool needs JavaScript. Enable it and reload the page.</div></noscript>
+  </section>
+
+  <section id="tool" class="tool wrap" aria-label="Cast test tool">
+    <div class="col">
+      <!-- Device -->
+      <article class="card" aria-labelledby="device-h">
+        <div class="card-head">
+          <h2 id="device-h"><span class="step">1</span>Connect a device</h2>
+          <span id="deviceBadge" class="pill">Not connected</span>
+        </div>
+        <p class="hint" id="deviceHint">Your computer and Cast device must be on the same Wi-Fi network.</p>
+        <div class="actions">
+          <button id="connectBtn" class="btn primary" type="button" disabled>
+            <svg class="ico"><use href="#i-cast"/></svg>Connect
+          </button>
+          <button id="disconnectBtn" class="btn" type="button" disabled>Disconnect</button>
+          <button id="stopAppBtn" class="btn ghost" type="button" disabled title="Ends the session and closes the receiver app on the TV">Stop receiver app</button>
+        </div>
+        <details class="sub" id="receiverDetails">
+          <summary>Receiver application <span class="muted" id="appIdSummary">Default Media Receiver</span></summary>
+          <label for="appId">Receiver app ID</label>
+          <div class="inline">
+            <input id="appId" placeholder="CC1AD845 (Default Media Receiver)" autocomplete="off" spellcheck="false" inputmode="latin" maxlength="32" />
+            <button id="applyAppId" class="btn" type="button">Apply</button>
+          </div>
+          <p class="hint">Use the app ID from the Cast SDK Developer Console to test a custom or styled receiver. Applying reloads the page.</p>
+        </details>
+      </article>
+
+      <!-- Media -->
+      <article class="card" aria-labelledby="media-h">
+        <div class="card-head">
+          <h2 id="media-h"><span class="step">2</span>Choose media</h2>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Media source">
+          <button role="tab" id="tab-samples" aria-controls="panel-samples" aria-selected="true" type="button">Samples</button>
+          <button role="tab" id="tab-custom" aria-controls="panel-custom" aria-selected="false" tabindex="-1" type="button">Custom URL</button>
+          <button role="tab" id="tab-recent" aria-controls="panel-recent" aria-selected="false" tabindex="-1" type="button">Recent</button>
+        </div>
+
+        <div role="tabpanel" id="panel-samples" aria-labelledby="tab-samples">
+          <ul class="samples" id="samples"></ul>
+        </div>
+
+        <div role="tabpanel" id="panel-recent" aria-labelledby="tab-recent" hidden>
+          <ul class="recent" id="recent"></ul>
+          <p class="empty" id="recentEmpty">Media you cast shows up here, stored only in this browser.</p>
+          <button id="clearRecent" class="btn ghost small" type="button" hidden>Clear history</button>
+        </div>
+
+        <div role="tabpanel" id="panel-custom" aria-labelledby="tab-custom" hidden>
+        <form id="mediaForm" novalidate>
+          <div class="field">
+            <label for="mediaUrl">Media URL <span class="req" aria-hidden="true">*</span></label>
+            <input id="mediaUrl" type="url" required placeholder="https://example.com/stream.m3u8" autocomplete="url" spellcheck="false" />
+          </div>
+          <div class="grid2">
+            <div class="field">
+              <label for="contentType">Content type</label>
+              <input id="contentType" list="contentTypes" placeholder="Detected from URL" spellcheck="false" />
+              <datalist id="contentTypes">
+                <option value="video/mp4">MP4</option>
+                <option value="video/webm">WebM</option>
+                <option value="application/x-mpegurl">HLS</option>
+                <option value="application/dash+xml">DASH</option>
+                <option value="application/vnd.ms-sstr+xml">Smooth Streaming</option>
+                <option value="audio/mpeg">MP3</option>
+                <option value="audio/mp4">AAC / M4A</option>
+                <option value="audio/flac">FLAC</option>
+                <option value="image/jpeg">JPEG</option>
+                <option value="image/png">PNG</option>
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="streamType">Stream type</label>
+              <select id="streamType">
+                <option value="BUFFERED">On demand (buffered)</option>
+                <option value="LIVE">Live</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="grid2">
+            <div class="field">
+              <label for="title">Title</label>
+              <input id="title" placeholder="Shown on the TV" />
+            </div>
+            <div class="field">
+              <label for="subtitle">Subtitle / artist</label>
+              <input id="subtitle" placeholder="Optional" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="poster">Poster / artwork URL</label>
+            <input id="poster" type="url" placeholder="Optional image URL" spellcheck="false" />
+          </div>
+
+          <details class="sub">
+            <summary>Advanced options</summary>
+            <div class="grid2">
+              <div class="field">
+                <label for="startTime">Start at (seconds)</label>
+                <input id="startTime" type="number" min="0" step="1" inputmode="numeric" placeholder="0" />
+              </div>
+              <div class="field check">
+                <label><input id="autoplay" type="checkbox" checked /> Autoplay</label>
+              </div>
+            </div>
+            <div class="grid2">
+              <div class="field">
+                <label for="subsUrl">Subtitles (WebVTT URL)</label>
+                <input id="subsUrl" type="url" placeholder="https://…/captions.vtt" spellcheck="false" />
+              </div>
+              <div class="field">
+                <label for="subsLang">Subtitle language</label>
+                <input id="subsLang" placeholder="en" maxlength="12" />
+              </div>
+            </div>
+            <div class="grid2">
+              <div class="field">
+                <label for="hlsSeg">HLS audio segment format</label>
+                <select id="hlsSeg">
+                  <option value="">Auto</option>
+                  <option value="ts">TS</option>
+                  <option value="fmp4">fMP4</option>
+                  <option value="aac">AAC</option>
+                  <option value="ac3">AC3</option>
+                  <option value="e_ac3">E-AC3</option>
+                  <option value="mp3">MP3</option>
+                  <option value="ts_aac">TS-AAC</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="hlsVideoSeg">HLS video segment format</label>
+                <select id="hlsVideoSeg">
+                  <option value="">Auto</option>
+                  <option value="mpeg2_ts">MPEG-2 TS</option>
+                  <option value="fmp4">fMP4</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="customData">Custom data (JSON, sent with the load request)</label>
+              <textarea id="customData" rows="2" spellcheck="false" placeholder='{"drmToken": "…"}'></textarea>
+            </div>
+          </details>
+
+          <p class="form-error" id="formError" role="alert" hidden></p>
+
+          <div class="actions">
+            <button id="castBtn" class="btn primary" type="submit" disabled>
+              <svg class="ico"><use href="#i-cast"/></svg>Cast now
+            </button>
+            <button id="queueBtn" class="btn" type="button" disabled>Add to queue</button>
+            <button id="previewBtn" class="btn ghost" type="button">Preview here</button>
+            <button id="shareBtn" class="btn ghost" type="button" title="Copy a link that pre-fills this form">
+              <svg class="ico"><use href="#i-link"/></svg>Copy link
+            </button>
+          </div>
+
+          <div class="preview" id="previewWrap" hidden>
+            <video id="preview" controls playsinline preload="metadata"></video>
+            <img id="previewImg" alt="Image preview" hidden />
+            <button id="closePreview" class="icon-btn preview-close" type="button" aria-label="Close preview">
+              <svg class="ico"><use href="#i-x"/></svg>
+            </button>
+          </div>
+        </form>
+        </div>
+      </article>
+    </div>
+
+    <div class="col col-side">
+      <!-- Now playing -->
+      <article class="card now" aria-labelledby="now-h">
+        <div class="card-head">
+          <h2 id="now-h"><span class="step">3</span>Remote control</h2>
+          <span id="playerBadge" class="pill">Idle</span>
+        </div>
+        <div class="art" id="art">
+          <img id="artImg" alt="" hidden />
+          <div class="art-empty" id="artEmpty">
+            <svg class="ico big"><use href="#i-cast"/></svg>
+            <span>Nothing casting yet</span>
+          </div>
+          <span class="live-tag" id="liveTag" hidden>LIVE</span>
+        </div>
+        <div class="np-meta">
+          <p class="np-title" id="npTitle">—</p>
+          <p class="np-sub" id="npSub"></p>
+        </div>
+        <div class="seek">
+          <input id="seekBar" type="range" min="0" max="0" step="1" value="0" disabled aria-label="Seek" />
+          <div class="times"><span id="curTime">0:00</span><span id="durTime">0:00</span></div>
+        </div>
+        <div class="transport" role="group" aria-label="Playback controls">
+          <button id="prevBtn" class="icon-btn" type="button" disabled aria-label="Previous in queue" title="Previous"><svg class="ico"><use href="#i-prev"/></svg></button>
+          <button id="backBtn" class="icon-btn" type="button" disabled aria-label="Back 10 seconds" title="Back 10s (J / ←)"><svg class="ico"><use href="#i-back"/></svg></button>
+          <button id="playBtn" class="icon-btn play" type="button" disabled aria-label="Play" title="Play / pause (Space / K)"><svg class="ico"><use id="playIcon" href="#i-play"/></svg></button>
+          <button id="fwdBtn" class="icon-btn" type="button" disabled aria-label="Forward 10 seconds" title="Forward 10s (L / →)"><svg class="ico"><use href="#i-fwd"/></svg></button>
+          <button id="nextBtn" class="icon-btn" type="button" disabled aria-label="Next in queue" title="Next"><svg class="ico"><use href="#i-next"/></svg></button>
+        </div>
+        <div class="subctl">
+          <button id="muteBtn" class="icon-btn" type="button" disabled aria-label="Mute" title="Mute (M)"><svg class="ico"><use id="muteIcon" href="#i-vol"/></svg></button>
+          <input id="volumeBar" type="range" min="0" max="1" step="0.02" value="1" disabled aria-label="Volume" />
+          <button id="ccBtn" class="icon-btn" type="button" disabled aria-pressed="false" aria-label="Subtitles" title="Toggle subtitles (C)"><svg class="ico"><use href="#i-cc"/></svg></button>
+          <select id="speed" disabled aria-label="Playback speed" title="Playback speed">
+            <option value="0.5">0.5×</option>
+            <option value="0.75">0.75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1.25×</option>
+            <option value="1.5">1.5×</option>
+            <option value="2">2×</option>
+          </select>
+          <button id="stopBtn" class="icon-btn" type="button" disabled aria-label="Stop media" title="Stop media"><svg class="ico"><use href="#i-stop"/></svg></button>
+        </div>
+        <dl class="facts">
+          <dt>Device</dt><dd id="deviceName">—</dd>
+          <dt>Receiver</dt><dd id="receiverName">—</dd>
+          <dt>Session</dt><dd id="sessionState">—</dd>
+        </dl>
+        <p class="kbd-hint">Shortcuts: <kbd>Space</kbd> play/pause · <kbd>←</kbd><kbd>→</kbd> seek · <kbd>↑</kbd><kbd>↓</kbd> volume · <kbd>M</kbd> mute · <kbd>C</kbd> captions</p>
+      </article>
+
+      <!-- Queue -->
+      <article class="card" aria-labelledby="queue-h">
+        <div class="card-head">
+          <h2 id="queue-h">Queue</h2>
+          <span class="pill" id="queueCount">0</span>
+        </div>
+        <ol class="queue" id="queue"></ol>
+        <p class="empty" id="queueEmpty">Use <strong>Add to queue</strong> to line up several items on the receiver.</p>
+      </article>
+
+      <!-- Messages -->
+      <details class="card collapsible" id="msgCard">
+        <summary><h2>Custom messages</h2><span class="muted">For custom receivers</span></summary>
+        <div class="field">
+          <label for="msgNs">Namespace</label>
+          <input id="msgNs" placeholder="urn:x-cast:com.example.custom" spellcheck="false" />
+        </div>
+        <div class="field">
+          <label for="msgBody">Message (JSON or text)</label>
+          <textarea id="msgBody" rows="3" spellcheck="false" placeholder='{"type": "PING"}'></textarea>
+        </div>
+        <div class="actions">
+          <button id="msgSend" class="btn" type="button" disabled>Send message</button>
+        </div>
+        <p class="hint">Replies on the same namespace appear in the event log.</p>
+      </details>
+
+      <!-- Log -->
+      <details class="card collapsible" id="logCard" open>
+        <summary><h2>Event log</h2><span class="muted" id="logCount">0 events</span></summary>
+        <div class="log" id="log" role="log" aria-live="polite" tabindex="0"></div>
+        <div class="actions">
+          <button id="copyLog" class="btn ghost small" type="button">Copy</button>
+          <button id="downloadLog" class="btn ghost small" type="button">Download</button>
+          <button id="clearLog" class="btn ghost small" type="button">Clear</button>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ Crawlable content ============ -->
+  <section id="how-it-works" class="content wrap" aria-labelledby="how-h">
+    <h2 id="how-h">How to test a stream on Chromecast</h2>
+    <ol class="steps">
+      <li>
+        <h3>Open in Chrome</h3>
+        <p>Open Cast Test Sender in Google Chrome or Microsoft Edge on a computer or Android phone connected to the same Wi-Fi network as your Chromecast or Google TV.</p>
+      </li>
+      <li>
+        <h3>Connect</h3>
+        <p>Press <strong>Connect</strong> or the Cast icon and pick your device. The Default Media Receiver launches on the TV, or your own receiver if you entered a custom app ID.</p>
+      </li>
+      <li>
+        <h3>Cast and control</h3>
+        <p>Pick a sample or paste your own MP4, HLS or DASH URL and press <strong>Cast now</strong>. Then play, pause, seek, change volume, toggle subtitles and watch every event in the log.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="content wrap" aria-labelledby="features-h">
+    <h2 id="features-h">Everything you need to debug Google Cast playback</h2>
+    <ul class="features">
+      <li><h3>Every major format</h3><p>Progressive MP4 and WebM, adaptive HLS, MPEG-DASH and Smooth Streaming, plus audio and images.</p></li>
+      <li><h3>Custom receivers</h3><p>Test your own receiver application ID before you publish it, including styled and custom Web Receivers.</p></li>
+      <li><h3>Subtitles and tracks</h3><p>Attach a WebVTT subtitle file and switch captions on or off from the sender.</p></li>
+      <li><h3>Live and queues</h3><p>Load live streams, line up a queue of items, and skip forward or back between them.</p></li>
+      <li><h3>Custom namespaces</h3><p>Send JSON messages on your own <code>urn:x-cast:</code> namespace and read the receiver's replies.</p></li>
+      <li><h3>Shareable test links</h3><p>Copy a link that pre-fills the stream, so QA and teammates can reproduce an issue in one click.</p></li>
+    </ul>
+  </section>
+
+  <section id="formats" class="content wrap" aria-labelledby="formats-h">
+    <h2 id="formats-h">Formats supported by the Default Media Receiver</h2>
+    <div class="table-wrap">
+      <table>
+        <caption class="sr-only">Media formats and MIME types</caption>
+        <thead><tr><th scope="col">Type</th><th scope="col">Formats</th><th scope="col">Content type</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Progressive video</th><td>MP4 (H.264 / AAC), WebM (VP8, VP9)</td><td><code>video/mp4</code>, <code>video/webm</code></td></tr>
+          <tr><th scope="row">HLS</th><td>MPEG-2 TS, fMP4 / CMAF, packed audio</td><td><code>application/x-mpegurl</code></td></tr>
+          <tr><th scope="row">MPEG-DASH</th><td>fMP4 / CMAF, Widevine DRM (custom receiver)</td><td><code>application/dash+xml</code></td></tr>
+          <tr><th scope="row">Smooth Streaming</th><td>Fragmented MP4, PlayReady (custom receiver)</td><td><code>application/vnd.ms-sstr+xml</code></td></tr>
+          <tr><th scope="row">Audio</th><td>MP3, AAC, FLAC, Opus, Vorbis, WAV</td><td><code>audio/mpeg</code>, <code>audio/mp4</code>, <code>audio/flac</code></td></tr>
+          <tr><th scope="row">Images</th><td>JPEG, PNG, GIF, BMP, WebP</td><td><code>image/jpeg</code>, <code>image/png</code>, <code>image/webp</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">HEVC, Dolby Vision, HDR10 and 4K playback depend on the model: Chromecast with Google TV and Chromecast Ultra support more codecs than older Chromecasts.</p>
+  </section>
+
+  <section id="troubleshooting" class="content wrap" aria-labelledby="trouble-h">
+    <h2 id="trouble-h">Troubleshooting common Cast errors</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th scope="col">Error</th><th scope="col">What it usually means</th><th scope="col">Fix</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><code>LOAD_FAILED</code></th><td>The receiver could not fetch or decode the media.</td><td>Check the URL, the content type and CORS headers, and that the codec is supported. For fMP4 HLS, set the segment formats to fMP4.</td></tr>
+          <tr><th scope="row">No devices found</th><td>Discovery (mDNS) is blocked between browser and device.</td><td>Use the same Wi-Fi network and turn off the VPN, guest network or AP / client isolation.</td></tr>
+          <tr><th scope="row"><code>RECEIVER_UNAVAILABLE</code></th><td>The receiver app ID is wrong, or the device is not registered for an unpublished app.</td><td>Double-check the app ID and register the device serial in the Cast Developer Console.</td></tr>
+          <tr><th scope="row"><code>SESSION_ERROR</code> / <code>TIMEOUT</code></th><td>The device did not respond in time.</td><td>Restart the Cast device, reload this page and reconnect.</td></tr>
+          <tr><th scope="row">Cast API not available</th><td>The browser does not support the Web Sender SDK.</td><td>Use desktop or Android Chrome or Edge over HTTPS. Safari, Firefox and iOS are not supported.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="faq" class="content wrap" aria-labelledby="faq-h">
+    <h2 id="faq-h">Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary><h3>What is a Cast test sender?</h3></summary>
+        <p>A Cast test sender is a web page that uses the Google Cast Web Sender SDK to connect to a Chromecast, Google TV or Cast-enabled speaker and load a media URL on it. Developers use it to check that streams, subtitles and custom receiver apps play correctly on real Cast hardware.</p>
+      </details>
+      <details>
+        <summary><h3>Why doesn't the Cast button appear or find my Chromecast?</h3></summary>
+        <p>Use Google Chrome or Microsoft Edge on desktop or Android, open the page over HTTPS, and make sure your computer and Cast device are on the same Wi-Fi network. Guest networks, VPNs and routers with client or AP isolation often block Cast discovery.</p>
+      </details>
+      <details>
+        <summary><h3>Which formats does the Default Media Receiver support?</h3></summary>
+        <p>The Default Media Receiver plays MP4 (H.264/AAC), WebM (VP8/VP9), HLS, MPEG-DASH and Smooth Streaming video, MP3, AAC, FLAC, Opus and WAV audio, and JPEG, PNG, GIF, BMP and WebP images. HEVC, 4K and HDR support depends on the specific Cast device.</p>
+      </details>
+      <details>
+        <summary><h3>Why does my HLS or DASH stream fail with LOAD_FAILED?</h3></summary>
+        <p>Adaptive streams are fetched by the receiver with JavaScript, so the manifest and every segment must be served over HTTPS with an Access-Control-Allow-Origin header. For HLS streams that use fragmented MP4 segments, set the HLS segment format options to FMP4.</p>
+      </details>
+      <details>
+        <summary><h3>How do I test my own custom Cast receiver?</h3></summary>
+        <p>Enter your receiver application ID from the Google Cast SDK Developer Console in the Receiver app ID field and apply it. Unpublished receivers only run on devices whose serial number is registered in the console; after registering, restart the device and wait about 15 minutes.</p>
+      </details>
+      <details>
+        <summary><h3>Can I cast a local file from my computer?</h3></summary>
+        <p>The Cast device downloads media itself, so the file must be reachable at a URL on your network or the internet. Serve the folder with a local web server and use your computer's LAN IP address rather than localhost. Adaptive streams also need HTTPS and CORS headers.</p>
+      </details>
+      <details>
+        <summary><h3>Is my data sent to a server?</h3></summary>
+        <p>No. The tool runs entirely in your browser. Media URLs are sent directly to your Cast device, and your recent casts are saved only in your browser's local storage.</p>
+      </details>
+      <details>
+        <summary><h3>Does it work on iPhone, Safari or Firefox?</h3></summary>
+        <p>No. The Google Cast Web Sender SDK is only supported in Chrome and Chromium-based Edge on Windows, macOS, Linux, ChromeOS and Android. On iOS you need a native app that uses the Cast iOS SDK.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p><strong>Cast Test Sender</strong>: a free tool for testing Google Cast playback.</p>
+    <p class="muted small">Not affiliated with or endorsed by Google LLC. Chromecast, Google Cast and Google TV are trademarks of Google LLC. Sample media © their respective owners (Blender Foundation, Mux, Shaka Player, W3C, Video.js, SoundHelix, MDN).</p>
+  </div>
+</footer>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script type="module" src="assets/js/main.js"></script>
+<!-- Google Cast Web Sender SDK -->
+<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1" async></script>
+</body>
+</html>
